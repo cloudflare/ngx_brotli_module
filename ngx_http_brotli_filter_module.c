@@ -165,6 +165,9 @@ ngx_http_brotli_header_filter(ngx_http_request_t *r)
      * if brotli is supported it takes precendence over gzip if size >
      * brotli_min_length */
     ae = r->headers_in.accept_encoding;
+    if(!ae) {
+        return ngx_http_next_header_filter(r);
+    }
     /* Since there is no reason for the br string to be present
      * unless brotli is accepted either as "br" or "brotli" we
      * just check for "br" */
