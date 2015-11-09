@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 /* This structure enables zlib like streaming behaviour of the C wrapper */
-typedef struct z_stream_s {
+typedef struct b_stream_s {
     unsigned char *next_in;      /* next input byte */
     unsigned long  avail_in;     /* number of bytes available at next_in */
     unsigned long  total_in;     /* total number of input bytes read so far */
@@ -30,7 +30,7 @@ typedef enum {B_OK, B_STREAM_END, B_BUF_ERROR} brotliRet;
 void *newBrotli(int quality);
 void freeBrotli(void *compressor);
 
-brotliRet compress(b_streamp state, brotliFlush f);
+brotliRet brotli_compress(b_streamp state, brotliFlush f);
 
 #ifdef __cplusplus
 }

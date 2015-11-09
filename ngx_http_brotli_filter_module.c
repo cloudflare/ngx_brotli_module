@@ -478,7 +478,7 @@ ngx_http_brotli_filter_compress(ngx_http_request_t *r, ngx_http_brotli_ctx_t *ct
                  ctx->bstream.avail_in, ctx->bstream.avail_out,
                  ctx->flush, ctx->redo);
 
-    rc = compress(&ctx->bstream, ctx->flush);
+    rc = brotli_compress(&ctx->bstream, ctx->flush);
 
     if (rc != B_OK && rc != B_STREAM_END && rc != B_BUF_ERROR) {
         ngx_log_error(NGX_LOG_ALERT, r->connection->log, 0,

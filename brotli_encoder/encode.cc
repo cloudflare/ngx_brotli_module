@@ -726,7 +726,7 @@ extern "C" {
         delete(c);
     }
 
-  brotliRet compress(b_streamp state, brotliFlush f) {
+  brotliRet brotli_compress(b_streamp state, brotliFlush f) {
     BrotliCompressor *c = static_cast<BrotliCompressor*>(state->compressor);
     /* We must flush the buffer first */
     while (1) {
