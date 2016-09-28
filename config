@@ -2,9 +2,30 @@
 ngx_addon_name=ngx_http_brotli_filter_module
 
 HTTP_FILTER_MODULES="$HTTP_FILTER_MODULES ngx_http_brotli_filter_module"
+
 NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_brotli_filter_module.c"
 
-CORE_INCS="$CORE_INCS $ngx_addon_dir/brotli_encoder"
-LINK_DEPS="$LINK_DEPS $ngx_addon_dir/brotli_encoder/libbrotli.a"
-CORE_LIBS="$CORE_LIBS $ngx_addon_dir/brotli_encoder/libbrotli.a -lstdc++ -lm"
+CORE_INCS="$CORE_INCS $ngx_addon_dir/brotli/include/"
+
+CORE_DEPS="$CORE_DEPS brotli"
+
+CORE_LIBS="$CORE_LIBS -lm"
+
+CORE_LINK="$CORE_LINK $ngx_addon_dir/brotli/bin/obj/enc/backward_references.o        \
+                      $ngx_addon_dir/brotli/bin/obj/enc/bit_cost.o                   \
+                      $ngx_addon_dir/brotli/bin/obj/enc/block_splitter.o             \
+                      $ngx_addon_dir/brotli/bin/obj/enc/brotli_bit_stream.o          \
+                      $ngx_addon_dir/brotli/bin/obj/enc/cluster.o                    \
+                      $ngx_addon_dir/brotli/bin/obj/enc/compress_fragment.o          \
+                      $ngx_addon_dir/brotli/bin/obj/enc/compress_fragment_two_pass.o \
+                      $ngx_addon_dir/brotli/bin/obj/enc/encode.o                     \
+                      $ngx_addon_dir/brotli/bin/obj/enc/entropy_encode.o             \
+                      $ngx_addon_dir/brotli/bin/obj/enc/histogram.o                  \
+                      $ngx_addon_dir/brotli/bin/obj/enc/literal_cost.o               \
+                      $ngx_addon_dir/brotli/bin/obj/enc/memory.o                     \
+                      $ngx_addon_dir/brotli/bin/obj/enc/metablock.o                  \
+                      $ngx_addon_dir/brotli/bin/obj/enc/static_dict.o                \
+                      $ngx_addon_dir/brotli/bin/obj/enc/utf8_util.o                  \
+                      $ngx_addon_dir/brotli/bin/obj/common/dictionary.o"
+
 have=NGX_HTTP_GZIP . auto/have

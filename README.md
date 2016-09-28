@@ -1,13 +1,10 @@
 # ngx_brotli_module
 
-This NGINX module enables the brotli compression for Accept-Encoding:"brotli".
+This NGINX module enables the brotli compression for Accept-Encoding:"br".
 
 Brotli is a recent compression format developed by Google.
 
-http://www.ietf.org/id/draft-alakuijala-brotli-06.txt
-
-The module comes with a bundled encoder from https://github.com/google/brotli 
-with a C wrapper.
+https://tools.ietf.org/html/rfc7932
 
 Use the "--add-module=" when configuring NGINX to enable the module.
 
